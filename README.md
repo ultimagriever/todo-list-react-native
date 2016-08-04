@@ -1,2 +1,2 @@
-# todo-list-react-native
-TODO list in React Native
+# TODO list in React Native
+Tested on iOS 9.2
