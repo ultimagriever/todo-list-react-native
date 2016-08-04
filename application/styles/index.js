@@ -29,6 +29,11 @@ module.exports = {
         borderRadius: 10,
         padding: 5,
         textAlign: 'center'
+      },
+      listFooter: {
+        textAlign: 'center',
+        fontSize: 10,
+        color: "#AAAAAA"
       }
     });
   }

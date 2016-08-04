@@ -89,7 +89,7 @@ export default class TodoListContainer extends Component {
               </Text>} 
           renderHeader={
             () =>
-              <View style={{ flex: 1, width: Dimensions.get('window').width - 20, marginBottom: 20 }}>
+              <View style={{ flex: 1, width: Dimensions.get('window').width - 20, marginBottom: 10 }}>
                 <TextInput
                   style={Styles.textInput}
                   placeholder="TODO"
@@ -99,6 +99,17 @@ export default class TodoListContainer extends Component {
                 <Button onPress={this.testePress}>
                   OK
                 </Button>
+              </View>
+          }
+          renderFooter={
+            () => 
+              <View contentContainerStyle={{ margin: 10 }}>
+                <Text style={Styles.listFooter}>
+                  Edit a row by tapping on it then changing its contents on the text field.
+                </Text>
+                <Text style={Styles.listFooter}>
+                  Delete a row by long pressing it and confirming the prompt.
+                </Text>
               </View>
           } />
       </ScrollView>
