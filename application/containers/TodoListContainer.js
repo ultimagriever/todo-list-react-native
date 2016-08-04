@@ -16,24 +16,36 @@ export default class TodoListContainer extends Component {
 
     this.state = {
       todoText: '',
-      dataSource: ds.cloneWithRows(this._data)
+      dataSource: ds.cloneWithRows(this._data),
+      selectedIndex: null
     }
 
     this.testePress = this.testePress.bind(this);
-    this.onPressListItem = this.onPressListItem.bind(this);
   }
 
   testePress() {
-    this._data = this._data.concat(this.state.todoText);
+    if (this.state.selectedIndex === null) { // Insert
+      this._data = this._data.concat(this.state.todoText);
+    } else { // Update
+      var index = parseInt(this.state.selectedIndex);
+
+      var newData = this._data.slice(0);
+      newData[index] = this.state.todoText;
+
+      this._data = newData;
+    }
+
+    console.log(this._data);
 
     this.setState({
       dataSource: this.state.dataSource.cloneWithRows(this._data)
     })
   }
 
-  onPressListItem() {
+  onPressListItem(text, index) {
     this.setState({
-      todoText: 'pqp'
+      todoText: text,
+      selectedIndex: index
     })
   }
 
@@ -43,7 +55,7 @@ export default class TodoListContainer extends Component {
         <ListView 
           dataSource={this.state.dataSource}
           contentContainerStyle={{ justifyContent: 'center', alignItems: 'center' }}
-          renderRow={rowData => <Text style={Styles.instructions} onPress={this.onPressListItem}>{rowData}</Text>} 
+          renderRow={(text, sectionID, rowID, highlightRow) => <Text key={rowID} style={Styles.instructions} onPress={this.onPressListItem.bind(this, text, rowID)}>{text}</Text>} 
           renderHeader={
             () =>
               <View style={{ flex: 1, width: Dimensions.get('window').width - 20, marginBottom: 20 }}>
