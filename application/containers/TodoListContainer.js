@@ -51,17 +51,17 @@ export default class TodoListContainer extends Component {
     })
   }
 
-  onLongPressListItem(index) {
+  onLongPressListItem(text, index) {
     Alert.alert('Are you sure?', 'Are you sure you want to delete this row? This action cannot be reverted.', [
-      { text: 'Yes', onPress: this.deleteItem.bind(this) },
+      { text: 'Yes', onPress: this.deleteItem.bind(this, text, index) },
       { text: 'No', onPress: () => false }
     ])
   }
 
-  deleteItem(index) {
+  deleteItem(text, index) {
     var newData = this._data.slice(0);
 
-    newData.splice(index, 1);
+    newData.splice(newData.indexOf(text), 1);
 
     this._data = newData;
 
@@ -84,9 +84,10 @@ export default class TodoListContainer extends Component {
                 key={rowID}
                 style={Styles.instructions}
                 onPress={this.onPressListItem.bind(this, text, rowID)}
-                onLongPress={this.onLongPressListItem.bind(this, rowID)}>
+                onLongPress={this.onLongPressListItem.bind(this, text, rowID)}>
                   {text}
-              </Text>} 
+              </Text>
+          }
           renderHeader={
             () =>
               <View style={{ flex: 1, width: Dimensions.get('window').width - 20, marginBottom: 10 }}>
