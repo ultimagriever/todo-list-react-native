@@ -18,7 +18,6 @@ export default class TodoListContainer extends Component {
       selectedIndex: null,
       loading: true
     }
-
     this.todoRef = this.getRef().child('items');
   }
 

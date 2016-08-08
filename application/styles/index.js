@@ -34,6 +34,42 @@ module.exports = {
         textAlign: 'center',
         fontSize: 10,
         color: "#AAAAAA"
+      },
+
+      /* Login Container Styles  */
+      loginContainer: {
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        backgroundColor: '#F5FCFF'
+      },
+      loginFormLabel: {
+          textAlign: 'right',
+          fontSize: 10,
+          color: '#000000',
+          fontWeight: 'bold'
+      },
+      loginFormTextInput: {
+        height: 20,
+        color: 'black',
+        textAlign: 'left',
+        borderRadius: 10,
+        padding: 5,
+        fontSize: 10
+      },
+      loginFormFieldSet: {
+        margin: 10,
+        alignItems: 'flex-start',
+        flexWrap: 'wrap'
+      },
+      loginButton: {
+        color: 'white',
+        backgroundColor: '#337AB7',
+        width: 80,
+        alignSelf: 'center',
+        borderRadius: 10,
+        fontSize: 15,
+        padding: 5
       }
     });
   }

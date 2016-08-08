@@ -7,4 +7,6 @@ const firebaseConfig = {
   storageBucket: "todolistreactnative-bdffa.appspot.com",
 };
 
-module.exports = firebase.initializeApp(firebaseConfig);
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+
+module.exports = firebaseApp;
